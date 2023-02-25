@@ -7,6 +7,7 @@ const daysField = document.querySelector('span[data-days]');
 const hoursField = document.querySelector('span[data-hours]');
 const minutesField = document.querySelector('span[data-minutes]');
 const secondsField = document.querySelector('span[data-seconds]');
+const DELAY = 1000;
 
 const myInput = document.querySelector('#datetime-picker');
 let chosenDate = null;
@@ -17,8 +18,7 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    if (selectedDates[0] < new Date()) {
-    //   window.alert('Please choose a date in the future');
+    if (selectedDates[0] < Date.now()) {
     Notify.failure('Please choose a date in the future');
     } else {
       startButton.disabled = false;
@@ -38,7 +38,7 @@ function onStartButtonPress() {
     if (deltaTime < 0) return;
     const remainingTime = convertMs(deltaTime);
     updateMarkup(remainingTime);
-    }, 1000);
+    }, DELAY);
     myInput.disabled = true;
     startButton.disabled = true;
     startButton.classList.remove('enabled');
