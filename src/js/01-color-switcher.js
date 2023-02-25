@@ -1,5 +1,3 @@
-import styles from "../css/01-color-swither-button.css"
-
 const startButton = document.querySelector('button[data-start]');
 const stopButton = document.querySelector('button[data-stop]');
 let timerId;
